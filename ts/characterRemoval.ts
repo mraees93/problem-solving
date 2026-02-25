@@ -25,7 +25,45 @@ function CharacterRemoval(strArr: string[]) {
     }
     return removedCharsCount.length ? Math.min(...removedCharsCount) : -1;
 }
-console.log(CharacterRemoval(["worlcde", "apple,bat,cat,goodbye,hello,yellow,why,world"])); //2
-console.log(CharacterRemoval(["baseball", "a,all,b,ball,bas,base,cat,code,d,e,quit,z"])); //4
-console.log(CharacterRemoval(["abcdefabcdef", "a,b,bfabcde,c,d,e,ee,eee,eeee,eeeeeeeee,fabc,go,goo,gooo"])); //5
-console.log(CharacterRemoval(["apbpleeeef", "a,ab,abc,abcg,b,c,dog,e,efd,zzzz"])); //8
+// console.log(CharacterRemoval(["worlcde", "apple,bat,cat,goodbye,hello,yellow,why,world"])); //2
+// console.log(CharacterRemoval(["baseball", "a,all,b,ball,bas,base,cat,code,d,e,quit,z"])); //4
+// console.log(CharacterRemoval(["abcdefabcdef", "a,b,bfabcde,c,d,e,ee,eee,eeee,eeeeeeeee,fabc,go,goo,gooo"])); //5
+// console.log(CharacterRemoval(["apbpleeeef", "a,ab,abc,abcg,b,c,dog,e,efd,zzzz"])); //8
+
+function CharacterRemoval(strArr: string[]): number {
+    const targetWord = strArr[0];
+    const dictionary = strArr[1].split(",");
+    
+    // We want the smallest number of removals, so start with the largest possible number
+    let minRemovals = Infinity;
+
+    // One loop to iterate through each word in the dictionary
+    for (const dictWord of dictionary) {
+        if (isSubsequence(dictWord, targetWord)) {
+            // The number of removals is simply the difference in lengths
+            const removals = targetWord.length - dictWord.length;
+            if (removals < minRemovals) {
+                minRemovals = removals;
+            }
+        }
+    }
+
+    return minRemovals === Infinity ? -1 : minRemovals;
+}
+// console.log(CharacterRemoval(["worlcde", "apple,bat,cat,goodbye,hello,yellow,why,world"])); //2
+
+// Efficient O(N) check: Is 'sub' a subsequence of 'full'?
+function isSubsequence(sub: string, full: string): boolean {
+    let subIdx = 0;
+    let fullIdx = 0;
+
+    while (subIdx < sub.length && fullIdx < full.length) {
+        if (sub[subIdx] === full[fullIdx]) {
+            subIdx++;
+        }
+        fullIdx++;
+    }
+    // If we matched all characters in 'sub', it's a valid subsequence
+    return subIdx === sub.length;
+}
+
