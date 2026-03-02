@@ -37,8 +37,8 @@ The first element itself will never exist in the dictionary as a real word.
 
 function WordSplit(strArr: string[]) {
     const word: string = strArr[0];
-    const dictionary: Set<string> = new Set(strArr[1].split(","))
-    const result = []
+    const dictionary: Set<string> = new Set(strArr[1].split(","));
+    
     for(let i = 1; i < word.length; i++) {
         const firstWord = word.slice(0, i);
         const secondWord = word.slice(i);
