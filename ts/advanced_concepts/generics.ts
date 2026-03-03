@@ -38,3 +38,9 @@ value: T means "the parameter has the type T."
 
 const num = identity(42); // type: number
 const str = identity("hello"); //type: string
+
+//generics ensure that your code is reusable
+
+//generics ensure that your code is type-safe. You get the benefit of static typing without losing flexibility
+
+//examples of generics
