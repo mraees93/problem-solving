@@ -13,6 +13,8 @@ function LetterCount(str: string) : string | number {
             else obj[words[i][j]]++
         }
         const repeated = Object.keys(obj).filter(key => obj[key] > 1).reduce((curr, v) => curr + v, 0);
+        console.log(repeated);
+        
     }
 }
 console.log(LetterCount("hello apple pie")); // hello
