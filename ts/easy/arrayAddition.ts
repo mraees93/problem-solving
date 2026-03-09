@@ -20,6 +20,7 @@ function arrayAddition(nums: number[]) : boolean {
         if(total > max) {
             //check how 3 needs to be removed
             //maybe make the initial loop a recursive function
+            //TODO : add another reuasable function
         }
        //add another condition
     }
