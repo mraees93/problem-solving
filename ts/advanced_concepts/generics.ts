@@ -13,8 +13,8 @@ function firstElement<T>(arr: T[]): T {
 
 // now when using the function TS remembers the type:
 
-const numbers = [1, 2, 3];
-const firstNum = firstElement(numbers); //type: number
+// const numbers = [1, 2, 3];
+// const firstNum = firstElement(numbers); //type: number
 
 const words = ["hello", "world"];
 const firstWord = firstElement(words); //type: string
@@ -43,4 +43,26 @@ const str = identity("hello"); //type: string
 
 //generics ensure that your code is type-safe. You get the benefit of static typing without losing flexibility
 
-//examples of generics
+//generic arrays
+// generics are super useful when working with arrays
+
+function getFirstElement<T>(arr: T[]): T {
+    return arr[0];
+}
+
+const numbers = [1, 2, 3];
+const firstaNumber = getFirstElement<number>(numbers); //type is number
+
+const strings = ['a', 'b', 'c'];
+const firstString = getFirstElement<string>(strings); //type is string
+
+
+// generics with multiple types
+
+function pair<K, V>(key: K, value: V): [K, V] {
+    return [key, value];
+}
+
+const result = pair(123, "id"); //type: [string, number]
+
+console.log(result);
