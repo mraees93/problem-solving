@@ -8,22 +8,28 @@ function arrayAddition(nums: number[]) : boolean {
     nums = nums.sort((a, b) => a - b);
     const max = nums.at(-1);
     nums = nums.slice(0, -1);
-    let total: number = 0;
+    //let total: number = 0;
 
-    for(let i = 1; i < nums.length; i++) {
+    //for(let i = 0; i < nums.length; i++) {
+    const rec = (i: number, smallArr: number[], totalOfSmallArr: number) => {
+        if(totalOfSmallArr === max || i === nums.length) return true;
        //remove num from array with slice + slice
-       const arr = nums.slice(0, i).concat(nums.slice(i + 1))
+       smallArr = nums.slice(0, i).concat(nums.slice(i + 1))
 
-       const total = arr.reduce((curr, tot) => curr + tot, 0);
+       totalOfSmallArr = smallArr.reduce((curr, tot) => curr + tot, 0);
 
        //if more than then remove another number from array, case 2 is more
-        if(total > max) {
+       // if(total > max) {
             //check how 3 needs to be removed
             //maybe make the initial loop a recursive function
             //TODO : add another reuasable function
-        }
+       // }
        //add another condition
+
+       return rec(i + 1, smallArr, totalOfSmallArr)
     }
+        rec(0, nums, 0)
+return false;
 }
 console.log(arrayAddition([5, 7, 16, 1, 2]));
 console.log(arrayAddition([3, 5, -1, 8, 12]));
