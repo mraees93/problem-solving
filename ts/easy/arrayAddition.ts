@@ -4,34 +4,31 @@
 // example: if arr contains [4, 6, 23, 10, 1, 3] the output should return true because 4 + 6 + 10 + 3 = 23. 
 // The array will not be empty, will not contain all the same elements, and may contain negative numbers.
 
-function arrayAddition(nums: number[]) : boolean {
+function arrayAddition(nums: number[]): boolean {
     nums = nums.sort((a, b) => a - b);
     const max = nums.at(-1);
     nums = nums.slice(0, -1);
-    //let total: number = 0;
+    let result = false;
 
-    //for(let i = 0; i < nums.length; i++) {
     const rec = (i: number, smallArr: number[], totalOfSmallArr: number) => {
-        if(totalOfSmallArr === max || i === nums.length) return true;
-       //remove num from array with slice + slice
-       smallArr = nums.slice(0, i).concat(nums.slice(i + 1))
+        if (i === nums.length) return result;
+       
+        smallArr = smallArr.slice(0, i).concat(smallArr.slice(i + 1))
 
-       totalOfSmallArr = smallArr.reduce((curr, tot) => curr + tot, 0);
+        totalOfSmallArr = smallArr.reduce((curr, tot) => curr + tot, 0);
 
-       //if more than then remove another number from array, case 2 is more
-       // if(total > max) {
-            //check how 3 needs to be removed
-            //maybe make the initial loop a recursive function
-            //TODO : add another reuasable function
-       // }
-       //add another condition
+        if (totalOfSmallArr === max) {
+            result = true;
+            return result;
+        }
 
-       return rec(i + 1, smallArr, totalOfSmallArr)
+        return rec(i + 1, nums, totalOfSmallArr)
     }
-        rec(0, nums, 0)
-return false;
+
+    return rec(0, nums, 0);
 }
 console.log(arrayAddition([5, 7, 16, 1, 2]));
 console.log(arrayAddition([3, 5, -1, 8, 12]));
-// console.log(arrayAddition([4, 6, 23, 10, 1, 3]));
-// console.log(arrayAddition([10, 12, 500, 1, -5, 1, 0]));
+console.log(arrayAddition([4, 6, 23, 10, 1, 3]));
+console.log(arrayAddition([10, 12, 500, 1, -5, 1, 0]));
+console.log(arrayAddition([1, 2, 3, 5, 7, 8, 10]));  //2+3+5 //3+7  //8+2 //1+2+7
