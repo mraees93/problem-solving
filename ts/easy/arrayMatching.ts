@@ -10,8 +10,8 @@
 // least one element will exist in each array.
 
 function ArrayMatching(strArr: string[]) {
-    const arr1 = strArr[0].match(/\d+/g)?.map(Number) || [];
-    const arr2 = strArr[1].match(/\d+/g)?.map(Number) || [];
+    const arr1 = strArr[0].match(/\d+/g)?.map(Number) ?? [];
+    const arr2 = strArr[1].match(/\d+/g)?.map(Number) ?? [];
     
     const sortedArrays = [arr1, arr2].sort((a, b) => b.length - a.length);
 
@@ -21,7 +21,7 @@ function ArrayMatching(strArr: string[]) {
         i++
     }
 
-    return sortedArrays[0].join("-")
+    return sortedArrays[0].join("-");
 }
 console.log(ArrayMatching(["[1, 2, 5, 6]", "[5, 2, 8, 11]"]));
 console.log(ArrayMatching(["[5, 2, 3]", "[2, 2, 3, 10, 6]"]));
