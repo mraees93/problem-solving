@@ -4,18 +4,28 @@
 // "xooxxxxooxo" then the output should return false because there are 6 x's and 5 o's. 
 
 
-function ExOh(str: string) : boolean {
-    let x = ''
-    let o = ''
+// function ExOh(str: string) : boolean {
+//     let x = ''
+//     let o = ''
 
-    for(let i = 0; i < str.length; i++) {
-        if(str[i] === 'x') {
-            x = x + str[i];
-        } else {
-            o += str[i]
-        }
-    }
+//     for(let i = 0; i < str.length; i++) {
+//         if(str[i] === 'x') {
+//             x = x + str[i];
+//         } else {
+//             o += str[i]
+//         }
+//     }
+
+//     return x.length === o.length;
+// }
+// console.log(ExOh('xooxxxxooxo'));
+
+function ExOh(str: string) : boolean {
+    const filterByChar = (char: string) => str.split('').filter(v => v === char); 
+    let x = filterByChar('x');
+    let o = filterByChar('o');
 
     return x.length === o.length;
+
 }
 console.log(ExOh('xooxxxxooxo'));
