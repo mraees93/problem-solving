@@ -63,6 +63,21 @@ function pair<K, V>(key: K, value: V): [K, V] {
     return [key, value];
 }
 
-const result = pair(123, "id"); //type: [string, number]
+const result = pair("id", 123); //type: [string, number]
 
-console.log(result);
+//console.log(result);
+
+// generics with constraints
+
+// -- sometimes you would like to limit what types can be used
+
+function logLength< T extends {length: number} >(value: T) : number {
+    return value.length;
+}
+
+// the above function works with data types that have a length property
+logLength('hello');
+logLength([1, 2, 3]);
+logLength({length: 10})
+
+//logLength(42); //error because number has no length
