@@ -9,7 +9,7 @@ For example: if str is "BOB loves-coding" then your program should return the st
 
 function CamelCase(str: string) : string {
     const words = str.toLowerCase().split(/[^a-zA-Z0-9]+/);
-    const firstWord = words.at(0)?.toLowerCase();
+    const firstWord = words.at(0);
     const restOfWords = words.map((word) => word[0].toUpperCase() + word.slice(1)).slice(1);
 
     return firstWord + restOfWords.join("");
