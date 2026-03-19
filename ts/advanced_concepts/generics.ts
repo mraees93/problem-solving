@@ -81,3 +81,13 @@ logLength([1, 2, 3]);
 logLength({length: 10})
 
 //logLength(42); //error because number has no length
+
+// generics in interfaces
+
+interface Box<T> {
+    content: T;
+}
+
+const box1: Box<number> = { content: 42 };
+const box2: Box<string> = { content: 'hello' };
+
