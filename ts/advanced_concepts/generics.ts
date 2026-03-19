@@ -91,3 +91,24 @@ interface Box<T> {
 const box1: Box<number> = { content: 42 };
 const box2: Box<string> = { content: 'hello' };
 
+// generics in classes
+
+class Stack<T> {
+    private items: T[] = [];
+
+    push(item: T) {
+        this.items.push(item)
+    }
+
+    pop(): T | undefined {
+        return this.items.pop();
+    }
+}
+
+// usage
+
+const numberStack = new Stack<number>();
+numberStack.push(1);
+numberStack.push(2);
+console.log(numberStack.pop()); // 2
+
