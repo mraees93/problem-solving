@@ -1,15 +1,19 @@
 // function firstElement(arr: any[]) {
 //   return arr[0];
 // }
+
+// const e = firstElement([1, '3'])
+// console.log(typeof e);
+
 //this is a problem, return type is any, TS wont help you catch errors
 //if you pass a number[], you expect a number back, but TS wont enforce that
 
 
 // we can use generics to preserve the type
 
-function firstElement<T>(arr: T[]): T {
-    return arr[0];
-}
+// function firstElement<T>(arr: T[]): T {
+//     return arr[0];
+// }
 
 // now when using the function TS remembers the type:
 
