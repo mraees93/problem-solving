@@ -7,3 +7,8 @@ function AlphabetSoup(str: string) : string {
     return str.toLowerCase().split('').sort().join('')
 }
 console.log(AlphabetSoup('hello'));
+
+const numbers1 = [45, 4, 9, 16, 25];
+const myFunction = (value: number) => value * 2;
+const numbers2 = numbers1.map(myFunction);
+console.log(numbers2);
