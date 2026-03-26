@@ -11,3 +11,8 @@ function firstReverse(str: string) : string {
     return reverseString;
 }
 console.log(firstReverse('hello'));
+
+function firstReverse2(str: string) : string {
+    return str.split('').reverse().join('');
+}
+console.log(firstReverse2('hello'));
