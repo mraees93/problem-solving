@@ -12,3 +12,11 @@ function SecondGreatLow(arr: number[]) : string {
     return `${arr[0]} ${arr[1]}`
 }
 console.log(SecondGreatLow([7, 7, 12, 98, 106]));
+
+
+function SecondGreatLow2(arr: number[]) : string {
+    arr = [...new Set(arr.sort((num1, num2)  => num1 - num2))];
+
+    return arr.length > 2 ? `${arr[1]} ${arr.at(-1)}` : `${arr[0]} ${arr[1]}`
+}
+console.log(SecondGreatLow2([7, 7, 12, 98, 106]));
