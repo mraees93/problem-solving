@@ -21,7 +21,7 @@
 // const firstNum = firstElement(numbers); //type: number
 
 const words = ["hello", "world"];
-const firstWord = firstElement(words); //type: string
+//const firstWord = firstElement(words); //type: string
 
 // without generics, TS wouldnt know what type firstNum or firstWord should be
 
@@ -109,10 +109,43 @@ class Stack<T> {
     }
 }
 
-// usage
-
 const numberStack = new Stack<number>();
 numberStack.push(1);
 numberStack.push(2);
-console.log(numberStack.pop()); // 2
+//console.log(numberStack.pop()); // 2
 
+
+//type-safe dynamic function call with generics
+
+/*
+lets say you have an object with multiple functions, and you want to create a generic wrapper that allows calling these functions safely, ensuring type safety for arguments and return values
+
+*/
+
+type Methods = {
+    add: (a: number, b: number) => number;
+    concat: (a: string, b: string) => string;
+    isEven: (num: number) => boolean;
+}
+
+// generic function to safely call a method from an object
+function callMethod<T extends keyof Methods> (
+    method: T,
+    ...args: Parameters<Methods[T]>
+) : ReturnType<Methods[T]> {
+    const methods: Methods = {
+        add: (a, b) => a + b,
+        concat: (a, b) => a + b,
+        isEven: (num) => num % 2 === 0
+    }
+
+    return (methods[method] as (...args: any[]) => ReturnType<Methods[T]>)(...args);
+}
+
+//valid calls
+const sum = callMethod('add', 2, 3); //number
+const text = callMethod('concat', 'hello, ', 'World!'); //string
+const even = callMethod('isEven', 4); //boolean
+
+//ts will catch incorrect usage
+//callMethod('add', 'hello', 5); 
