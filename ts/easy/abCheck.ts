@@ -4,15 +4,13 @@
 // because there is exactly three characters between a and b). Otherwise return the string false. 
 
 function ABCheck(str: string) : boolean {
-    str = str.toLowerCase();
     for(let i = 0; i < str.length; i++) {
         if((str[i] === 'a' && str[i + 4] === 'b') || (str[i] === 'b' && str[i + 4] === 'a')) {
             return true;
-        }
+        } 
     }
     return false;
 }
-
 console.log(ABCheck("lane borrowed")) // true
 console.log(ABCheck("after badly")) // false
 console.log(ABCheck("Laura sobs")) // true
