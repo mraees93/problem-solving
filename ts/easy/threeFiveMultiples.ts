@@ -6,14 +6,14 @@ should return 23. The integer being passed will be between 1 and 100.
 */
 
 function ThreeFiveMultiples(num: number) : number {
-    let total = 0;
+    let sum: number = 0;
 
-    for (let i = 1; i < num; i++) {
-        if (i % 3 === 0 || i % 5 === 0) {
-            total += i
+    for(let i = 0; i < num; i++) {
+        if(i % 3 === 0 || i % 5 === 0) {
+            sum = sum + i
         }
     }
-    
-    return total;
+
+    return sum;
 }
 console.log(ThreeFiveMultiples(10));
