@@ -26,3 +26,39 @@ function SumMultiplier(numbers: number[]) : boolean {
 //console.log(SumMultiplier([2, 5, 6, -6, 16, 2, 3, 6, 5, 3]));
 
 
+function SumMultiplier2(numbers: number[]): boolean {
+  const sum = numbers.reduce((total, curr) => total + curr, 0);
+  const threshold = sum * 2;
+
+  // Track the two largest and two smallest values
+  let max1 = -Infinity, max2 = -Infinity;
+  let min1 = Infinity, min2 = Infinity;
+
+  for (const num of numbers) {
+    // Update largest values
+    if (num > max1) {
+      max2 = max1;
+      max1 = num;
+    } else if (num > max2) {
+      max2 = num;
+    }
+
+    // Update smallest values
+    if (num < min1) {
+      min2 = min1;
+      min1 = num;
+    } else if (num < min2) {
+      min2 = num;
+    }
+  }
+
+  const largestProduct = Math.max(max1 * max2, min1 * min2);
+  console.log(largestProduct, max1, max2, min1, min2);
+  
+  return largestProduct > threshold;
+}
+console.log(SumMultiplier2([2, 5, 6, -6, 16, 2, 3, 6, 5, 3]));
+/*
+max1 = 16, max2 = 6, min1 = -6, min2 = -6
+
+*/
