@@ -114,6 +114,10 @@ numberStack.push(1);
 numberStack.push(2);
 //console.log(numberStack.pop()); // 2
 
+const stringStack = new Stack<string>();
+stringStack.push('a');
+stringStack.push('b');
+
 
 //type-safe dynamic function call with generics
 
